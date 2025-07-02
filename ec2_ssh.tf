@@ -15,5 +15,5 @@ resource "aws_instance" "ec2_ssh" {
 
   # Configures a simple HTTP web page
   user_data = templatefile("${path.module}/ec2_config.tftpl", { SSH_PUB_KEY = data.sdm_ssh_ca_pubkey.this_key.public_key })
-  tags      = merge({ Name = "${local.name}-ssh" }, {"workflow" : "${local.name}-workflow"}, local.tags)
+  tags      = merge({ Name = "${local.name}-ssh" }, local.tags)
 }

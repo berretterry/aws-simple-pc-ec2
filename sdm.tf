@@ -15,7 +15,10 @@ resource "sdm_resource" "ssh_ec2" {
     username = "ec2-user"
     hostname = aws_instance.ec2_ssh.private_ip
     port     = 22
-    tags     = merge({ Name = "${local.name}-ssh" }, local.tags)
+    tags     = merge(
+      { Name = "${local.name}-ssh" },
+      {"workflow" : "${local.name}-workflow"},
+      local.tags)
 
     proxy_cluster_id = sdm_node.proxy-cluster.id
   }
