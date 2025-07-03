@@ -31,9 +31,4 @@ locals {
 
 #Proxy Cluster default traffic port
   traffic_port            = 443
-
-#No touchy
-  private_subnet_ids     = module.vpc.private_subnets
-
-  public_subnet_ids     = module.vpc.public_subnets
 }

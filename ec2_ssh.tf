@@ -10,7 +10,7 @@ resource "aws_instance" "ec2_ssh" {
   ami           = data.aws_ami.al2023.id
   instance_type = "t3.micro"
 
-  subnet_id              = local.public_subnet_ids[0]
+  subnet_id              = module.vpc.private_subnets[0]
   vpc_security_group_ids = [aws_security_group.ec2_ssh.id]
 
   # Configures a simple HTTP web page
